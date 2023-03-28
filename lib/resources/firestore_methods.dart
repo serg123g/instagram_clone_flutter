@@ -41,4 +41,20 @@ class FirestoreMethods {
     }
     return res;
   }
+
+  // method for updating or deleting the user from the likes array
+  // if contains the uid it will delete from the list or the other thing
+  Future<void> likePost(String postId, String uid, List likes) async {
+    try {
+      if (likes.contains(uid)) {
+        await _firestore.collection('posts').doc(postId).update({
+          'likes': FieldValue.arrayRemove([uid]),
+        });
+      } else {
+        await _firestore.collection('posts').doc(postId).update({
+          'likes': FieldValue.arrayUnion([uid])
+        });
+      }
+    } catch (e) {}
+  }
 }
