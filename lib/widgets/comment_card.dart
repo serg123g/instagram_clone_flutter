@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CommentCard extends StatefulWidget {
   final snap;
@@ -30,11 +31,11 @@ class _CommentCardState extends State<CommentCard> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'username',
+                          text: ' ${widget.snap['name']}',
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: 'Description to insert',
+                          text: ' ${widget.snap['text']}',
                         )
                       ],
                     ),
@@ -42,7 +43,8 @@ class _CommentCardState extends State<CommentCard> {
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: Text(
-                      '24/12/23',
+                      DateFormat.yMMMd()
+                          .format(widget.snap['datePublished'].toDate()),
                       style:
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                     ),
