@@ -2,7 +2,7 @@
 
 The following is an instagram clone project web and mobile responsive made with firebase
 
-MOBILE LAYOUT
+**MOBILE LAYOUT**
 
 Feed
 
@@ -24,7 +24,7 @@ Creating a post
 ![image](https://user-images.githubusercontent.com/64337381/236827058-1d978787-6d62-4901-a38b-001d46ecb3a1.png)
 
 
-WEB LAYOUT
+**WEB LAYOUT**
 
 ![image](https://user-images.githubusercontent.com/64337381/236826234-4bc1d3c7-0c4f-4432-9a57-e1acf887aadb.png)
 
