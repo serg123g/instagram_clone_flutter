@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/providers/user_provider.dart';
 import 'package:instagram_clone/screens/comments_screen.dart';
 import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/utils/global_variables.dart';
 import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/like_animation.dart';
 import 'package:intl/intl.dart';
@@ -42,20 +43,32 @@ class _PostCardState extends State<PostCard> {
     } catch (e) {
       showSnackBar(e.toString(), context);
     }
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
+    final size = MediaQuery.of(context).size;
     return Container(
-      color: mobileBackgroundColor,
+      //boundary for web
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: size.width > webScreenSize
+              ? secondaryColor
+              : mobileBackgroundColor,
+        ),
+      ),
+      // color: mobileBackgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           // HEADER SECTION
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16)
-                .copyWith(right: 0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: 16,
+            ).copyWith(right: 0),
             child: Row(
               children: [
                 CircleAvatar(

@@ -11,6 +11,7 @@ import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
 
 import '../responsive/responsive_layout_screen.dart';
+import '../utils/global_variables.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -91,7 +92,10 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
+      padding: MediaQuery.of(context).size.width > webScreenSize
+          ? EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width / 3)
+          : const EdgeInsets.symmetric(horizontal: 32),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -219,7 +223,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: const Text("Don't you have an account?"),
+                child: const Text("Don't you have an account? "),
               ),
               GestureDetector(
                 onTap: navigateToLogin,
